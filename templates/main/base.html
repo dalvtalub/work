@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}" />
+    <link rel="icon" type="image" href="https://static.detmir.st/media_out/016/087/3087016/1500/4.jpg">
+    {% block script %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header class="header">
+        <a class="company_name">DALVTALUB</a>
+        <nav class="nav_block">
+            <a class="navigation" href="../about_us">ABOUT US</a>
+            <a class="navigation" href="/">MATCHES</a>
+            <a class="navigation" href="../add_article"> ADD ARTICLE</a>
+            <a class="navigation" href="../articles">ARTICLES</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="blackout">
+               {% block content %}{% endblock %}
+        </div>
+    </div>
+    <footer class='footer'>
+        <h2 class='footer'>© 2021 Done in one evening. Vlad Bulat</h2>
+    </footer>
+</body>
+</html>
+

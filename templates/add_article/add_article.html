@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Add article
+{% endblock %}
+
+{% block content %}
+    <h3 class="text_head">Add article</h3>
+    <div class="form-control">
+        <form method="post"><!--Form for adding a match to the table-->
+            {% csrf_token %}
+            {{ form.text }}<br>
+            {{ form.time }}<br>
+            <button type="submit" class="submit">Add</button>
+        </form>
+        <span>{{ error }}</span>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Articles
+{% endblock %}
+<!-- Initiating the counter-->
+<!--  Specify the counter ID-->
+<!-- Displaying the text before the content of the tag <h2> -->
+{% block content %}
+    {% if articles %}
+        {% for article in articles %}
+            <div class="article">
+                <h3 class="text_head_counter"></h3>
+            </div>
+            <p class="article_text">{{ article.text }}</p>
+        {% endfor %}
+    {% else %}
+        <p>Temporarily no articles</p>
+    {% endif %}
+{% endblock %}

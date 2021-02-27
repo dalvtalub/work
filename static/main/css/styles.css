@@ -1,0 +1,266 @@
+/*@font-face {*/
+/*    font-family: 'Suisse';*/
+/*    src: url(/static/main/fonts/main_font.ttf); !* Путь к файлу со шрифтом *!*/
+/*}*/
+
+@font-face {
+    src: url(https://code.s3.yandex.net/web-code/fonts/SuisseIntl-Bold.woff);
+    font-family: 'Suisse';
+    font-weight: bold;
+}
+
+/* Разобраться со шрифтами */
+/* ////////////////////////////////////////////////////////// */
+
+body {
+    counter-reset: heading;
+}
+
+* {
+    margin: 0;
+}
+
+/*/////////////////////              base.html           /////////////////////////*/
+
+.header {
+    height: 6vh;
+    box-shadow: inset 0 -4px 10px rgba(0, 255, 255, .5);
+    display: flex;
+    justify-content: space-between;
+}
+
+.company_name {
+    box-sizing: border-box;
+    padding: 10px 0 0 35px;
+    /*color: #000080;*/
+    font-family: 'Suisse';
+    color: black;
+    font-size: 30px;
+    text-shadow: 2px 1px aqua;
+    justify-content: flex-start;
+}
+
+.nav_block {
+    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Suisse';
+    padding-top: 20px;
+    padding-right: 40px;
+    justify-content: flex-end;
+
+}
+
+.navigation {
+    text-decoration: underline;
+    color: black;
+    padding: 15px 15px 0 30px;
+    transition: opacity 0.1s;
+}
+
+.navigation:hover {
+    opacity: 0.5;
+}
+
+.blackout {
+    width: 100%;
+    height: 100%;
+    min-height: 94vh;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.container {
+    color: white;
+    font-size: 20px;
+    height: 100%;
+    min-height: 94vh;
+    text-align: center;
+    box-sizing: content-box;
+    background-size: cover;
+    background-position: center;
+    background-image: url("https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vdGJhbGwlMjBmaWVsZHxlbnwwfHwwfA%3D%3D&w=1000&q=80");
+    background-attachment: fixed;
+}
+
+.footer {
+    height: 70px;
+    background-color: black;
+    color: white;
+    padding-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*/////////////////////              index.html           /////////////////////////*/
+
+.text_head {
+    margin-bottom: 20px;
+}
+
+.text {
+    padding-bottom: 5px;
+}
+
+.matches {
+    color: white;
+    text-decoration: solid;
+    transition: opacity 0.1s;
+}
+
+.matches:hover {
+    opacity: 0.8;
+}
+
+.live {
+    width: 50vh;
+    display: inline-block;
+    text-align: center;
+    background-color: red;
+}
+
+/*/////////////////////              articles.html           /////////////////////////*/
+
+.article {
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.text_head_counter:before {
+    counter-increment: heading;
+    content: "ARTICLE NUMBER " counter(heading);
+}
+
+.article_text {
+    padding: 0 20px;
+    text-align: justify;
+}
+
+/*/////////////////////              about_us.html           /////////////////////////*/
+
+.text-about_us {
+    padding-top: 35px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.card {
+    display: inline-block;
+    color: black;
+    width: 350px;
+    margin-right: 60px;
+    padding: 45px 45px 70px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    background-color: rgba(255, 255, 255, .9);
+    box-shadow: inset -4px -4px 3px rgba(0, 0, 0, .6);
+}
+
+.no-right-margin {
+    margin-right: 0;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 16px;
+}
+
+.card-image {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+/*/////////////////////              add_article.html           /////////////////////////*/
+
+.form-control {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100vh;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgba(220, 220, 220, .7);
+    box-sizing: content-box;
+}
+
+.art{
+    height: 40vh;
+    width: 90vh;
+}
+
+.time{
+    height: 5vh;
+    width: 25vh;
+}
+
+.sorted {
+    width: 20%;
+    margin: 0;
+}
+
+.team {
+    width: 70%;
+    height: 70%;
+}
+
+.submit {
+    display: inline-block;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    height: 30px;
+    width: 200px;
+    font-size: large;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    border-radius: 10px;
+    transition: opacity 0.1s;
+}
+
+.sort {
+    width: 20%;
+    margin: 0;
+}
+
+.submit:hover {
+    opacity: 0.5;
+}
+
+/*/////////////////////              team_line-up.html           /////////////////////////*/
+
+.split {
+    height: 94vh;
+    width: 50%;
+    position: absolute;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+}
+
+/* Control the right side */
+.right {
+    right: 0;
+}
+
+.lineup_teams {
+    top: 50%;
+    left: 50%;
+    text-align: center;
+}
+
+.img {
+    width: 150px;
+    border-radius: 20%;
+}
