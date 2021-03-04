@@ -2,9 +2,6 @@
 {% block title %}
     Articles
 {% endblock %}
-<!-- Initiating the counter-->
-<!--  Specify the counter ID-->
-<!-- Displaying the text before the content of the tag <h2> -->
 {% block content %}
     {% if articles %}
         {% for article in articles %}
@@ -14,6 +11,6 @@
             <p class="article_text">{{ article.text }}</p>
         {% endfor %}
     {% else %}
-        <p>Temporarily no articles</p>
+        <h1 claas="text">Temporarily no articles</h1>
     {% endif %}
 {% endblock %}
