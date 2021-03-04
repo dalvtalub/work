@@ -12,23 +12,25 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post" class="form-control sorted" id="form">
-        {% csrf_token %}
-        <input type="text" placeholder="Team" class="form-control team" id="team_input" name="team">
-        <button name="send" class="submit sort">Sort</button>
-    </form>
+    {% csrf_token %}
+    <input type="text" placeholder="Team" class="form-control team" id="team_input" name="team">
+    <button name="send" class="submit sort" id="send">Sort</button>
     <h1 class="text_head">Schedule of matches</h1>
-    {% if matches_now or matches %} <!-- If there are matches or matches_now then -->
-        {% for match_now in matches_now %}
-            <h2 class="live"><a href="{% url 'teams' team1=match.team1 team2=match.team2 %}" class="text matches">
-                LIVE {{ match_now.team1 }}-{{ match_now.team2 }}</a></h2>
-        {% endfor %}
-        {% for match in matches %}
-            <h2 class="text"><a href="{% url 'teams' team1=match.team1 team2=match.team2 %}"
-                                class="text matches">{{ match.time }} {{ match.team1 }}-{{ match.team2 }} </a></h2>
-        {% endfor %}
-    {% else %} <!-- If there are not matches then -->
-        <h2 class="text_head">No football matches expected in the near future</h2>
-    {% endif %}
+    <div id="post-text">
+            {% if matches_now or matches %} <!-- If there are matches or matches_now then -->
+                {% for match_now in matches_now %}
+                    <h2 class="live"><a href="{% url 'teams' team1=match.team1 team2=match.team2 %}"
+                                        class="text matches">
+                        LIVE {{ match_now.team1 }}-{{ match_now.team2 }}</a></h2>
+                {% endfor %}
+                {% for match in matches %}
+                    <h2 class="text"><a href="{% url 'teams' team1=match.team1 team2=match.team2 %}"
+                                        class="text matches">{{ match.time }} {{ match.team1 }}-{{ match.team2 }} </a>
+                    </h2>
+                {% endfor %}
+            {% else %} <!-- If there are not matches then -->
+                </div>
+                <h2 class="text_head">No football matches expected in the near future</h2>
+            {% endif %}
     <script src="../../static/main/js/submit_form.js"></script>
 {% endblock %}
