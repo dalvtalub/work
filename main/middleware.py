@@ -2,6 +2,7 @@ import time
 from django.http import HttpResponse
 
 
+# show time of response
 def timing(get_response):
     def middleware(request):
         t1 = time.time()
@@ -13,6 +14,7 @@ def timing(get_response):
     return middleware
 
 
+# show how to resolve the problem with links
 def stack_overflow(get_response):
     def middleware(request):
         return get_response(request)

@@ -1,15 +1,10 @@
-# import django
-# from django.conf import settings
-#
-# settings.configure()
-# django.setup()
-
 from main.models import Teams, Matches
 import random
 import datetime
 import django.db
 
 
+# create matches for the year ahead. Condition: all teams have to play two matches with each others.
 def run():
     for team1 in Teams.objects.all():
         for team2 in Teams.objects.all():
@@ -25,6 +20,7 @@ def run():
                 continue
 
 
+# create random date and time of match
 def data():
     start_date = datetime.datetime.today()
     end_date = start_date + datetime.timedelta(days=365)

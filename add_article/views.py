@@ -5,6 +5,7 @@ from main.models import Articles
 
 def add_article(request):
     error = ''
+    # checking POST request. If it's valid we add it to db
     if request.method == 'POST':
         form = ArticlesForm(request.POST)
         if form.is_valid():
@@ -31,7 +32,7 @@ def add_article(request):
     return render(request, 'add_article/add_article.html', context)
 
 
-# def add_article(request):
+# def add_match(request):
 #     error = ''
 #     if request.method == 'POST':
 #         form = MatchesForm(request.POST)
