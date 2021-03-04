@@ -4,5 +4,20 @@
     Line-up
 {% endblock %}
 {% block content %}
-    {{ team1 }} - {{ team2 }}
+    <div class="split left">
+        <h1 class="lineup_teams">{{ team1 }}</h1>
+        {% for logo in logos %}
+            {% if logo.team == team1 %}
+                <img src="../../media/{{ logo.logo }}" class="lineup_teams img">
+            {% endif %}
+        {% endfor %}
+    </div>
+        <div class="split right">
+            <h1 class="lineup_teams">{{ team2 }}</h1>
+            {% for logo in logos %}
+            {% if logo.team == team2 %}
+                <img src="../../media/{{ logo.logo }}" class="lineup_teams img">
+            {% endif %}
+        {% endfor %}
+        </div>
 {% endblock %}
