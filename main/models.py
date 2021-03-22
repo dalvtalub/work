@@ -2,7 +2,8 @@ from django.db import models
 from django.db.models.constraints import UniqueConstraint
 
 
-class Articles(models.Model):  # Creating a table
+class Articles(models.Model):
+    """Model of Articles"""
     text = models.TextField('Article')
     time = models.DateTimeField('Time add')
 
@@ -15,9 +16,11 @@ class Articles(models.Model):  # Creating a table
 
 
 class Teams(models.Model):
+    """Model of Teams"""
     team = models.CharField('Team', max_length=25)
     logo = models.ImageField(upload_to='logos')
 
+    """Define direction of images for this class"""
     @property
     def photo_url(self):
         if self.logo and hasattr(self.logo, 'url'):
@@ -31,7 +34,8 @@ class Teams(models.Model):
         verbose_name_plural = 'Teams'
 
 
-class Matches(models.Model):  # Creating a table
+class Matches(models.Model):
+    """Model of Matches"""
     team1 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='+')
     team2 = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='+')
     time = models.DateTimeField('Time', max_length=50)
@@ -43,15 +47,17 @@ class Matches(models.Model):  # Creating a table
         verbose_name = 'Match'
         verbose_name_plural = 'Matches'
         constraints = [
-            UniqueConstraint(fields=['team1', 'team2'], name='unique_match')
+            UniqueConstraint(fields=['team1', 'team2'], name='unique_match')    # each match have to be unique
         ]
 
 
 class Cards(models.Model):
+    """Model of Cards"""
     image = models.ImageField(upload_to='cards')
     name = models.CharField('Name', max_length=15)
     description = models.TextField('Description')
 
+    """Define direction of images for this class"""
     @property
     def photo_url(self):
         if self.image and hasattr(self.image, 'url'):
