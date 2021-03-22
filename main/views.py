@@ -11,35 +11,26 @@ import datetime as dt
 def index(request):
     matches = []
     matches_now = []
-    # all_matches = Matches.objects.order_by('time')
     # AJAX request: sort and view matches by team
     if request.is_ajax():
-        team_name = request.POST['team'].title()
-        try:
-            team = Teams.objects.get(team=team_name)
-            matches = Matches.objects.filter(Q(team1=team.id) | Q(team2=team.id))
-            result = []
-            for match in matches:
-                result.append({
-                    'team_name1': match.team1.team,
-                    'team_name2': match.team2.team,
-                    'time': match.time,
-                    'url': f'team_lineup/{match.team1.team}__{match.team2.team}',
-                })
-            return JsonResponse({"result": result})
-        except:
-            return JsonResponse({"result": "Team is not exist"})
-        # add matches and live matches
-        # if match.team1.team == team:
-        #     if match.time > dt.datetime.now(dt.timezone.utc):
-        #         result.append(match)
-        #     elif match.time <= dt.datetime.now(dt.timezone.utc) <= match.time + dt.timedelta(hours=1, minutes=30):
-        #         matches_now.append(match)
-        # if match.team2.team == team:
-        #     if match.time > dt.datetime.now(dt.timezone.utc):
-        #         matches.append(match)
-        #     elif match.time <= dt.datetime.now(dt.timezone.utc) <= match.time + dt.timedelta(hours=1, minutes=30):
-        #         matches_now.append(match)
+        if request.POST:
+            team_name = request.POST['team'].title()
+            try:
+                team = Teams.objects.get(team=team_name)
+                matches = Matches.objects.filter(Q(team1=team.id) | Q(team2=team.id))
+                result = []
+                for match in matches:
+                    result.append({
+                        'team_name1': match.team1.team,
+                        'team_name2': match.team2.team,
+                        'time': match.time,
+                        'url': f'team_lineup/{match.team1.team}__{match.team2.team}',
+                        'time_now': dt.datetime.now(dt.timezone.utc),
+                        'during_of_match': match.time + dt.timedelta(hours=1, minutes=30),
+                    })
+                return JsonResponse({"result": result})
+            except:
+                return JsonResponse({"error": "Team is not exist"})
     all_matches = Matches.objects.order_by('time')  # Match.objects.find(), order_by() for example: [:1]
     teams = Teams.objects.order_by('team')
     # view all matches and live matches
@@ -56,6 +47,7 @@ def index(request):
     return render(request, 'main/index.html', context)
 
 
+# all information is in db ( description, images, card's name)
 def about_us(request):
     cards = Cards.objects.all()
     context = {
