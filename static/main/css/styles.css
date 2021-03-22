@@ -111,9 +111,9 @@ body {
 }
 
 .live {
-    width: 50vh;
-    display: inline-block;
-    text-align: center;
+    width: 90vh;
+    margin-left: auto;
+    margin-right: auto;
     background-color: red;
 }
 
@@ -207,7 +207,7 @@ body {
 }
 
 .team {
-    width: 70%;
+    width: 20%;
     height: 70%;
 }
 
@@ -227,7 +227,7 @@ body {
 }
 
 .sort {
-    width: 20%;
+    width: 10%;
     margin: 0;
 }
 
