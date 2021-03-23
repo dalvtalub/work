@@ -6,7 +6,6 @@ $(document).ready(function () {
 
         } else {
             $.ajax({
-                cache: 'true',
                 type: 'post',
                 url: '/',
                 data: {
